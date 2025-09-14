@@ -20,7 +20,7 @@ def generate_diff(filepath1, filepath2):
         elif value2 is None:
             lines.append(f"- {key}: {value1}")
         elif value1 != value2:
-                lines.append(f"- {key}: {value1}")
-                lines.append(f"+ {key}: {value2}")
+            lines.append(f"- {key}: {value1}")
+            lines.append(f"+ {key}: {value2}")
 
     return "{\n" + "\n".join(lines) + "\n}"
