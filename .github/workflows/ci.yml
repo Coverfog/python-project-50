@@ -24,3 +24,15 @@ jobs:
       - name: Run tests
         run: |
           make test
+      - name: Run coverage test
+        run: |
+          make test-coverage
+      - name: SonarQubeScan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Coverfog_python-project-50
+            -Dsonar.organization=overfog-project-1
+            -Dsonar.python.coverage.reportPaths=coverage.xml
