@@ -1,9 +1,18 @@
+import os
+
 from gendiff.config.json_parser import json_read
+from gendiff.config.yaml_parser import yaml_read
 
 
 def generate_diff(filepath1, filepath2):
-    data1 = json_read(filepath1)
-    data2 = json_read(filepath2)
+    _, extension = os.path.splitext(filepath1)
+
+    if extension == '.json':
+        data1 = json_read(filepath1)
+        data2 = json_read(filepath2)
+    elif extension in {'.yaml', '.yml'}:
+        data1 = yaml_read(filepath1)
+        data2 = yaml_read(filepath2)
 
     all_keys = sorted(set(data1.keys()).union(data2.keys()))
 
