@@ -6,3 +6,9 @@ def test_plain_json():
         data = file.read()
     
     assert generate_diff('tests/test_data/file1.json', 'tests/test_data/file2.json') == data
+
+def test_plain_yaml():
+    with open('tests/test_data/result.txt', 'r', encoding='utf-8') as file:
+        data = file.read()
+    
+    assert generate_diff('tests/test_data/file1.yaml', 'tests/test_data/file2.yaml') == data
