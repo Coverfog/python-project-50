@@ -20,8 +20,12 @@
 
 [![Actions Status](https://github.com/Coverfog/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Coverfog/python-project-50/actions)
 
-## Gendiff usage
+## Gendiff usage:
 
 ### Plain json
 
 [![asciicast](https://asciinema.org/a/740475.svg)](https://asciinema.org/a/740475)
+
+### Plain yaml
+
+[![asciicast](https://asciinema.org/a/742278.svg)](https://asciinema.org/a/742278)
