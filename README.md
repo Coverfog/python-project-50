@@ -1,8 +1,8 @@
-### GitHub Actions:
+### GitHub Actions
 
 [![CI](https://github.com/Coverfog/python-project-50/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Coverfog/python-project-50/actions/workflows/ci.yml)
 
-### SonarQube analysis status:
+### SonarQube analysis status
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
@@ -16,16 +16,16 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
 
-### Hexlet tests and linter status:
+### Hexlet tests and linter status
 
 [![Actions Status](https://github.com/Coverfog/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Coverfog/python-project-50/actions)
 
-## Gendiff usage:
+## Gendiff usage
 
 ### Plain json
 
-[![asciicast](https://asciinema.org/a/740475.svg)](https://asciinema.org/a/740475)
+[![asciicast](https://asciinema.org/a/746747.svg)](https://asciinema.org/a/746747)
 
 ### Plain yaml
 
-[![asciicast](https://asciinema.org/a/742278.svg)](https://asciinema.org/a/742278)
+[![asciicast](https://asciinema.org/a/746748.svg)](https://asciinema.org/a/746748)
