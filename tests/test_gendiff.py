@@ -22,7 +22,9 @@ def test_plain_yaml():
 
 
 def test_complex_json():
-    with open('tests/test_data/complex_result.txt', 'r', encoding='utf-8') as file:
+    with open(
+        'tests/test_data/complex_result.txt', 'r', encoding='utf-8'
+    ) as file:
         data = file.read()
 
     assert generate_diff(
@@ -32,7 +34,9 @@ def test_complex_json():
 
 
 def test_complex_yaml():
-    with open('tests/test_data/complex_result.txt', 'r', encoding='utf-8') as file:
+    with open(
+        'tests/test_data/complex_result.txt', 'r', encoding='utf-8'
+    ) as file:
         data = file.read()
 
     assert generate_diff(
