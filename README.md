@@ -29,3 +29,7 @@
 ### Plain yaml
 
 [![asciicast](https://asciinema.org/a/746748.svg)](https://asciinema.org/a/746748)
+
+### Complex files
+
+[![asciicast](https://asciinema.org/a/746751.svg)](https://asciinema.org/a/746751)
