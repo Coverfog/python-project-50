@@ -33,13 +33,25 @@ def build_diff(data1, data2):
 
         if isinstance(value1, dict) and isinstance(value2, dict):
             nested_diff = build_diff(value1, value2)
-            result[key] = {'status': 'nested', 'value': nested_diff}
+            result[key] = {
+                'status': 'nested',
+                'value': nested_diff
+            }
         elif value1 == value2:
-            result[key] = {'status': 'unchanged', 'value': format_values(value1)}
+            result[key] = {
+                'status': 'unchanged',
+                'value': format_values(value1)
+            }
         elif key not in data1.keys():
-            result[key] = {'status': 'added', 'value': format_values(value2)}
+            result[key] = {
+                'status': 'added',
+                'value': format_values(value2)
+            }
         elif key not in data2.keys():
-            result[key] = {'status': 'removed', 'value': format_values(value1)}
+            result[key] = {
+                'status': 'removed',
+                'value': format_values(value1)
+            }
         elif value1 != value2:
             result[key] = {
                 'status': 'changed',
@@ -51,17 +63,18 @@ def build_diff(data1, data2):
 
 
 def format_values(data):
+
     if isinstance(data, dict):
         result = {}
 
         for key, value in data.items():
             if isinstance(value, dict):
                 result[key] = {'status': 'unchanged',
-                               'value' : format_values(value)
+                               'value': format_values(value)
                 }
             else:
                 result[key] = {'status': 'unchanged',
-                               'value' : value
+                               'value': value
                 }
 
         return result
@@ -75,29 +88,48 @@ def stylish(data, depth=0):
 
     for key, value in data.items():
 
-        def value_str(v):
-            if isinstance(v, dict):
-                return stylish(v, depth + 1)
-            elif v is True:
-                return 'true'
-            elif v is False:
-                return 'false'
-            elif v is None:
-                return 'null'
-            return str(v)
-
         match value['status']:
             case 'nested':
                 nested_diff = stylish(value['value'], depth + 1)
-                lines.append(f'{indents}    {key}: {nested_diff}')
+                lines.append(
+                    f'{indents}    {key}: {nested_diff}'
+                )
             case 'unchanged':
-                lines.append(f"{indents}    {key}: {value_str(value['value'])}")
+                lines.append(
+                    f"{indents}    {key}: "
+                    f"{process_value(value['value'], depth)}"
+                )
             case 'added':
-                lines.append(f"{indents}  + {key}: {value_str(value['value'])}")
+                lines.append(
+                    f"{indents}  + {key}: "
+                    f"{process_value(value['value'], depth)}"
+                )
             case 'removed':
-                lines.append(f"{indents}  - {key}: {value_str(value['value'])}")
+                lines.append(
+                    f"{indents}  - {key}: "
+                    f"{process_value(value['value'], depth)}"
+                )
             case 'changed':
-                lines.append(f"{indents}  - {key}: {value_str(value['old_value'])}")
-                lines.append(f"{indents}  + {key}: {value_str(value['new_value'])}")
+                lines.append(
+                    f"{indents}  - {key}: "
+                    f"{process_value(value['old_value'], depth)}"
+                )
+                lines.append(
+                    f"{indents}  + {key}: "
+                    f"{process_value(value['new_value'], depth)}"
+                )
 
     return "{\n" + "\n".join(lines) + f"\n{indents}}}"
+
+
+def process_value(v, depth):
+
+    if isinstance(v, dict):
+        return stylish(v, depth + 1)
+    elif v is True:
+        return 'true'
+    elif v is False:
+        return 'false'
+    elif v is None:
+        return 'null'
+    return str(v)
