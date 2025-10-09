@@ -40,46 +40,26 @@ def build_diff(data1, data2):
         elif value1 == value2:
             result[key] = {
                 'status': 'unchanged',
-                'value': format_values(value1)
+                'value': value1
             }
         elif key not in data1.keys():
             result[key] = {
                 'status': 'added',
-                'value': format_values(value2)
+                'value': value2
             }
         elif key not in data2.keys():
             result[key] = {
                 'status': 'removed',
-                'value': format_values(value1)
+                'value': value1
             }
         elif value1 != value2:
             result[key] = {
                 'status': 'changed',
-                'old_value': format_values(value1),
-                'new_value': format_values(value2)
+                'old_value': value1,
+                'new_value': value2
             }
 
     return result
-
-
-def format_values(data):
-
-    if isinstance(data, dict):
-        result = {}
-
-        for key, value in data.items():
-            if isinstance(value, dict):
-                result[key] = {'status': 'unchanged',
-                               'value': format_values(value)
-                }
-            else:
-                result[key] = {'status': 'unchanged',
-                               'value': value
-                }
-
-        return result
-
-    return data
 
 
 def stylish(data, depth=0):
@@ -87,37 +67,47 @@ def stylish(data, depth=0):
     indents = '    ' * depth
 
     for key, value in data.items():
+        if isinstance(value, dict) and 'status' in value.keys():
 
-        match value['status']:
-            case 'nested':
-                nested_diff = stylish(value['value'], depth + 1)
-                lines.append(
-                    f'{indents}    {key}: {nested_diff}'
-                )
-            case 'unchanged':
-                lines.append(
-                    f"{indents}    {key}: "
-                    f"{process_value(value['value'], depth)}"
-                )
-            case 'added':
-                lines.append(
-                    f"{indents}  + {key}: "
-                    f"{process_value(value['value'], depth)}"
-                )
-            case 'removed':
-                lines.append(
-                    f"{indents}  - {key}: "
-                    f"{process_value(value['value'], depth)}"
-                )
-            case 'changed':
-                lines.append(
-                    f"{indents}  - {key}: "
-                    f"{process_value(value['old_value'], depth)}"
-                )
-                lines.append(
-                    f"{indents}  + {key}: "
-                    f"{process_value(value['new_value'], depth)}"
-                )
+            match value['status']:
+                case 'nested':
+                    nested_diff = stylish(value['value'], depth + 1)
+                    lines.append(
+                        f'{indents}    {key}: {nested_diff}'
+                    )
+                case 'unchanged':
+                    lines.append(
+                        f"{indents}    {key}: "
+                        f"{process_value(value['value'], depth)}"
+                    )
+                case 'added':
+                    lines.append(
+                        f"{indents}  + {key}: "
+                        f"{process_value(value['value'], depth)}"
+                    )
+                case 'removed':
+                    lines.append(
+                        f"{indents}  - {key}: "
+                        f"{process_value(value['value'], depth)}"
+                    )
+                case 'changed':
+                    lines.append(
+                        f"{indents}  - {key}: "
+                        f"{process_value(value['old_value'], depth)}"
+                    )
+                    lines.append(
+                        f"{indents}  + {key}: "
+                        f"{process_value(value['new_value'], depth)}"
+                    )
+        elif isinstance(value, dict):
+            nested_diff = stylish(value, depth + 1)
+            lines.append(
+                f'{indents}    {key}: {nested_diff}'
+            )
+        else:
+            lines.append(
+                f'{indents}    {key}: {process_value(value, depth)}'
+            )
 
     return "{\n" + "\n".join(lines) + f"\n{indents}}}"
 
