@@ -1,5 +1,8 @@
-def plain(data, prefix=[]):
+def plain(data, prefix=None):
     lines = []
+
+    if prefix is None:
+        prefix = []
 
     for key, value in data.items():
 
