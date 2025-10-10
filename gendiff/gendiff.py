@@ -2,6 +2,7 @@ import os
 
 from gendiff.config.json_parser import json_read
 from gendiff.config.yaml_parser import yaml_read
+from gendiff.formatters.plain import plain
 from gendiff.formatters.stylish import stylish
 
 
@@ -22,6 +23,8 @@ def generate_diff(filepath1, filepath2, format_name='stylish'):
     match format_name:
         case 'stylish':
             return stylish(build_diff(data1, data2))
+        case 'plain':
+            return plain(build_diff(data1, data2))
 
 
 def build_diff(data1, data2):
