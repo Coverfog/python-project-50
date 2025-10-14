@@ -22,14 +22,18 @@
 
 ## Gendiff usage
 
-### Plain json
+### Simple json
 
 [![asciicast](https://asciinema.org/a/746747.svg)](https://asciinema.org/a/746747)
 
-### Plain yaml
+### Simple yaml
 
 [![asciicast](https://asciinema.org/a/746748.svg)](https://asciinema.org/a/746748)
 
 ### Complex files
 
 [![asciicast](https://asciinema.org/a/746751.svg)](https://asciinema.org/a/746751)
+
+### Plain format
+
+[![asciicast](https://asciinema.org/a/748885.svg)](https://asciinema.org/a/748885)
