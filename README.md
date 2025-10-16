@@ -16,6 +16,25 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Coverfog_python-project-50&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Coverfog_python-project-50)
 
+### Description
+
+A small program that shows the difference between two files
+
+### Setup
+
+```bash
+make install
+```
+
+```bash
+make build
+```
+
+```bash
+make package-install
+```
+
+
 ### Hexlet tests and linter status
 
 [![Actions Status](https://github.com/Coverfog/python-project-50/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Coverfog/python-project-50/actions)
