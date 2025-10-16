@@ -37,3 +37,7 @@
 ### Plain format
 
 [![asciicast](https://asciinema.org/a/748885.svg)](https://asciinema.org/a/748885)
+
+### Json format
+
+[![asciicast](https://asciinema.org/a/749240.svg)](https://asciinema.org/a/749240)
