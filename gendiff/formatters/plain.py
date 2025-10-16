@@ -40,13 +40,13 @@ def process_value(v):
 
     if isinstance(v, dict):
         return '[complex value]'
-    elif isinstance(v, int):
-        return str(v)
     elif v is True:
         return 'true'
     elif v is False:
         return 'false'
     elif v is None:
         return 'null'
+    elif isinstance(v, int):
+        return str(v)
 
     return f"'{str(v)}'"
