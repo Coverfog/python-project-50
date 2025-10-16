@@ -1,7 +1,10 @@
 [project]
+authors = [
+    {name = "Coverfog", email = "hain.heither@gmail.com"},
+]
 name = "hexlet-code"
 version = "0.1.0"
-description = "Add your description here"
+description = "A small program that shows the difference between two files"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
