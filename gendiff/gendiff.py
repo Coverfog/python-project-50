@@ -2,9 +2,9 @@ import os
 
 from gendiff.config.json_parser import json_read
 from gendiff.config.yaml_parser import yaml_read
+from gendiff.formatters.json import json_format
 from gendiff.formatters.plain import plain
 from gendiff.formatters.stylish import stylish
-from gendiff.formatters.json import json_format
 
 
 def generate_diff(filepath1, filepath2, format_name='stylish'):
