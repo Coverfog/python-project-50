@@ -4,6 +4,7 @@ from gendiff.config.json_parser import json_read
 from gendiff.config.yaml_parser import yaml_read
 from gendiff.formatters.plain import plain
 from gendiff.formatters.stylish import stylish
+from gendiff.formatters.json import json_format
 
 
 def generate_diff(filepath1, filepath2, format_name='stylish'):
@@ -21,10 +22,12 @@ def generate_diff(filepath1, filepath2, format_name='stylish'):
         data2 = yaml_read(filepath2)
 
     match format_name:
-        case 'stylish':
-            return stylish(build_diff(data1, data2))
         case 'plain':
             return plain(build_diff(data1, data2))
+        case 'json':
+            return json_format(build_diff(data1, data2))
+        
+    return stylish(build_diff(data1, data2))
 
 
 def build_diff(data1, data2):
