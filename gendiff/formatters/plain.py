@@ -40,6 +40,8 @@ def process_value(v):
 
     if isinstance(v, dict):
         return '[complex value]'
+    elif isinstance(v, int):
+        return str(v)
     elif v is True:
         return 'true'
     elif v is False:
